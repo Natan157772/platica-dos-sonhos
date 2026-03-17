@@ -17,19 +17,9 @@ body{
 background:#0f0f11;
 color:#eaeaea;
 scroll-behavior:smooth;
-overflow-x:hidden;
 }
 
-/* ANIMAÇÕES */
-.fade{
-opacity:0;
-transform:translateY(40px);
-transition:1s;
-}
-.fade.show{
-opacity:1;
-transform:translateY(0);
-}
+/* NAVBAR */
 
 header{
 position:fixed;
@@ -46,17 +36,14 @@ padding:15px 8%;
 }
 
 nav h1{color:#d4af37;}
+nav a{color:white;text-decoration:none;margin-left:20px;}
 
-nav a{
-color:white;
-text-decoration:none;
-margin-left:20px;
-}
+/* HERO */
 
 .hero{
 height:100vh;
 background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
-url("dr-ricardo.jpg") center/cover;
+url("https://images.unsplash.com/photo-1588776814546-ec7e9e2c63b8") center/cover;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -76,9 +63,36 @@ margin-top:20px;
 }
 
 section{padding:90px 8%;}
-
 .title{text-align:center;margin-bottom:40px;}
 .title h2{color:#d4af37;}
+
+/* TABS */
+
+.tabs{
+display:flex;
+justify-content:center;
+gap:15px;
+margin-bottom:30px;
+flex-wrap:wrap;
+}
+
+.tab-btn{
+background:#1a1a1d;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:30px;
+cursor:pointer;
+transition:.3s;
+}
+
+.tab-btn.active,
+.tab-btn:hover{
+background:#d4af37;
+color:black;
+}
+
+/* CARDS */
 
 .cards{
 display:grid;
@@ -91,13 +105,13 @@ background:#1a1a1d;
 padding:20px;
 border-radius:12px;
 transition:.4s;
-text-align:center;
+opacity:0;
+transform:translateY(40px);
+animation:fadeUp .8s forwards;
 }
 
 .card img{
 width:100%;
-height:180px;
-object-fit:cover;
 border-radius:10px;
 margin-bottom:10px;
 }
@@ -107,51 +121,30 @@ transform:translateY(-10px);
 box-shadow:0 0 20px #d4af3750;
 }
 
-/* SLIDER ANTES DEPOIS */
+.hide{display:none;}
+
+@keyframes fadeUp{
+to{opacity:1;transform:translateY(0);}
+}
+
+/* SLIDER */
+
 .slider{
 position:relative;
-max-width:600px;
-margin:auto;
 overflow:hidden;
 border-radius:12px;
 }
 
-.slider img{
-width:100%;
-display:block;
-}
+.slider img{width:100%;display:block;}
 
-.before{
+.slider input{
 position:absolute;
-top:0;
-left:0;
-width:50%;
-overflow:hidden;
-}
-
-.range{
 width:100%;
-margin-top:10px;
-}
-
-/* GALERIA */
-.galeria{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-}
-
-.galeria img{
-width:100%;
-border-radius:10px;
-transition:.4s;
-}
-
-.galeria img:hover{
-transform:scale(1.05);
+bottom:10px;
 }
 
 /* LOGIN */
+
 .login{
 max-width:400px;
 margin:auto;
@@ -176,13 +169,35 @@ width:100%;
 cursor:pointer;
 }
 
-.admin{
+/* PAINÉIS */
+
+.admin,.paciente{
 display:none;
 background:#111;
 padding:20px;
 margin-top:20px;
 border-radius:10px;
 }
+
+/* GALERIA */
+
+.galeria{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+}
+
+.galeria img{
+width:100%;
+border-radius:10px;
+transition:.3s;
+}
+
+.galeria img:hover{
+transform:scale(1.05);
+}
+
+/* WHATSAPP */
 
 .whatsapp{
 position:fixed;
@@ -196,27 +211,27 @@ text-decoration:none;
 font-size:22px;
 }
 
+footer{
+text-align:center;
+padding:30px;
+background:black;
+margin-top:50px;
+}
+
 /* MOBILE PRO */
+
 @media(max-width:768px){
 
 .hero h2{font-size:32px;}
 
 nav{
 flex-direction:column;
+gap:10px;
 align-items:center;
 }
 
-nav a{margin:10px;}
-
 section{padding:70px 5%;}
 
-}
-
-footer{
-text-align:center;
-padding:30px;
-background:black;
-margin-top:50px;
 }
 
 </style>
@@ -229,26 +244,25 @@ margin-top:50px;
 <h1>Dr. Rogerio Pontes</h1>
 <div>
 <a href="#procedimentos">Procedimentos</a>
-<a href="#antesdepois">Resultados</a>
-<a href="#galeria">Galeria</a>
+<a href="#galeria">Resultados</a>
 <a href="#login">Login</a>
 </div>
 </nav>
 </header>
 
 <section class="hero">
-<div class="fade">
+<div>
 <h2>Cirurgia Plástica de Alto Padrão</h2>
 <p>Resultados naturais com segurança e tecnologia.</p>
-<a href="#login" class="btn">Agendar Consulta</a>
+<a href="#login" class="btn">Área do Paciente</a>
 </div>
 </section>
 
 <!-- PROCEDIMENTOS -->
 <section id="procedimentos">
+
 <div class="title"><h2>Procedimentos</h2></div>
 
-<!-- ABAS -->
 <div class="tabs">
 <button class="tab-btn active" onclick="filtrar('todos',this)">Todos</button>
 <button class="tab-btn" onclick="filtrar('face',this)">Face</button>
@@ -259,62 +273,46 @@ margin-top:50px;
 <div class="cards">
 
 <div class="card" data-cat="face">
-<img src="https://images.unsplash.com/photo-1588776814546-ec7e9e2c63b8" style="width:100%;border-radius:10px;margin-bottom:10px;">
+<div class="slider">
+<img src="https://images.unsplash.com/photo-1588776814546-ec7e9e2c63b8">
+<input type="range">
+</div>
 <h3>Rinoplastia</h3>
-<p>Harmonização facial e correção nasal.</p>
 </div>
 
 <div class="card" data-cat="corpo">
-<img src="https://images.unsplash.com/photo-1550831107-1553da8c8464" style="width:100%;border-radius:10px;margin-bottom:10px;">
+<img src="https://images.unsplash.com/photo-1550831107-1553da8c8464">
 <h3>Lipoaspiração HD</h3>
-<p>Definição corporal avançada.</p>
 </div>
 
 <div class="card" data-cat="mamas">
-<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db" style="width:100%;border-radius:10px;margin-bottom:10px;">
+<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db">
 <h3>Mamoplastia</h3>
-<p>Aumento ou redução mamária.</p>
 </div>
 
 <div class="card" data-cat="corpo">
-<img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118" style="width:100%;border-radius:10px;margin-bottom:10px;">
+<img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118">
 <h3>Abdominoplastia</h3>
-<p>Remodelação abdominal completa.</p>
 </div>
 
 </div>
-</section>
-
-<!-- ANTES DEPOIS -->
-<section id="antesdepois" class="fade">
-<div class="title"><h2>Antes e Depois</h2></div>
-
-<div class="slider">
-<img src="https://images.unsplash.com/photo-1556228720-195a672e8a03">
-<div class="before" id="before">
-<img src="https://images.unsplash.com/photo-1556228720-195a672e8a03">
-</div>
-</div>
-
-<input type="range" min="0" max="100" value="50" class="range"
-oninput="slide(this.value)">
 </section>
 
 <!-- GALERIA -->
-<section id="galeria" class="fade">
-<div class="title"><h2>Galeria Médica</h2></div>
+<section id="galeria">
+<div class="title"><h2>Resultados Reais</h2></div>
 
 <div class="galeria">
-<img src="https://images.unsplash.com/photo-1580281657527-47d9d1f2bfa1">
 <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118">
-<img src="https://images.unsplash.com/photo-1581595219315-a187dd40c322">
-<img src="https://images.unsplash.com/photo-1580281780460-82d277d008b5">
+<img src="https://images.unsplash.com/photo-1580281657527-47b3c6b5aa4d">
+<img src="https://images.unsplash.com/photo-1588776814546-ec7e9e2c63b8">
 </div>
 </section>
 
 <!-- LOGIN -->
 <section id="login">
-<div class="title"><h2>Área Restrita</h2></div>
+
+<div class="title"><h2>Área Segura</h2></div>
 
 <div class="login">
 <input id="user" placeholder="Usuário">
@@ -322,15 +320,33 @@ oninput="slide(this.value)">
 <button onclick="login()">Entrar</button>
 </div>
 
-<div class="admin" id="medico">
+<div class="admin" id="admin">
 <h3>Painel Médico</h3>
-<p>Controle completo de pacientes e consultas.</p>
+<ul id="lista"></ul>
 </div>
 
-<div class="admin" id="paciente">
+<div class="paciente" id="paciente">
 <h3>Área do Paciente</h3>
-<p>Consulta confirmada: 10/04/2026 - 14:30</p>
+
+<p><b>Próxima Consulta:</b> 10/04/2026 - 14:30</p>
+
+<hr>
+
+<ul>
+<li>✔ Evitar esforço físico</li>
+<li>✔ Usar cinta cirúrgica</li>
+<li>✔ Retorno em 15 dias</li>
+</ul>
+
+<br>
+
+<a href="https://wa.me/5521988138982" target="_blank">
+<button>Contato com Clínica</button>
+</a>
+
+<br><br>
 <button onclick="logout()">Sair</button>
+
 </div>
 
 </section>
@@ -343,41 +359,54 @@ oninput="slide(this.value)">
 
 <script>
 
-/* ANIMAÇÃO SCROLL */
-const faders=document.querySelectorAll('.fade');
+function filtrar(cat,btn){
 
-window.addEventListener('scroll',()=>{
-faders.forEach(el=>{
-if(el.getBoundingClientRect().top<window.innerHeight-100){
-el.classList.add('show');
+document.querySelectorAll(".tab-btn")
+.forEach(b=>b.classList.remove("active"));
+
+btn.classList.add("active");
+
+document.querySelectorAll(".card").forEach(card=>{
+if(cat==="todos"){
+card.classList.remove("hide");
+}else{
+card.dataset.cat===cat
+? card.classList.remove("hide")
+: card.classList.add("hide");
 }
 });
-});
 
-/* SLIDER */
-function slide(v){
-document.getElementById("before").style.width=v+"%";
 }
 
-/* LOGIN SEPARADO */
 function login(){
 
 let u=document.getElementById("user").value;
 let p=document.getElementById("pass").value;
 
-if(u==="medico" && p==="1234"){
-document.getElementById("medico").style.display="block";
-}
-else if(u==="paciente" && p==="1234"){
+if(u==="Rogerio" && p==="1234"){
+document.getElementById("admin").style.display="block";
 document.getElementById("paciente").style.display="block";
-}
-else{
+carregarAgenda();
+}else{
 alert("Login inválido");
 }
 }
 
+function carregarAgenda(){
+let lista=document.getElementById("lista");
+lista.innerHTML="";
+
+let agendamentos=JSON.parse(localStorage.getItem("agenda"))||[];
+
+agendamentos.forEach(a=>{
+let li=document.createElement("li");
+li.textContent=a;
+lista.appendChild(li);
+});
+}
+
 function logout(){
-document.getElementById("medico").style.display="none";
+document.getElementById("admin").style.display="none";
 document.getElementById("paciente").style.display="none";
 }
 
