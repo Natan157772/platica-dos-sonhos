@@ -17,6 +17,18 @@ body{
 background:#0f0f11;
 color:#eaeaea;
 scroll-behavior:smooth;
+overflow-x:hidden;
+}
+
+/* ANIMAÇÕES */
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+.fade.show{
+opacity:1;
+transform:translateY(0);
 }
 
 header{
@@ -51,10 +63,7 @@ justify-content:center;
 text-align:center;
 }
 
-.hero h2{
-font-size:50px;
-color:#d4af37;
-}
+.hero h2{font-size:50px;color:#d4af37;}
 
 .btn{
 background:#d4af37;
@@ -79,9 +88,18 @@ gap:25px;
 
 .card{
 background:#1a1a1d;
-padding:25px;
+padding:20px;
 border-radius:12px;
 transition:.4s;
+text-align:center;
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:10px;
 }
 
 .card:hover{
@@ -89,6 +107,51 @@ transform:translateY(-10px);
 box-shadow:0 0 20px #d4af3750;
 }
 
+/* SLIDER ANTES DEPOIS */
+.slider{
+position:relative;
+max-width:600px;
+margin:auto;
+overflow:hidden;
+border-radius:12px;
+}
+
+.slider img{
+width:100%;
+display:block;
+}
+
+.before{
+position:absolute;
+top:0;
+left:0;
+width:50%;
+overflow:hidden;
+}
+
+.range{
+width:100%;
+margin-top:10px;
+}
+
+/* GALERIA */
+.galeria{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:15px;
+}
+
+.galeria img{
+width:100%;
+border-radius:10px;
+transition:.4s;
+}
+
+.galeria img:hover{
+transform:scale(1.05);
+}
+
+/* LOGIN */
 .login{
 max-width:400px;
 margin:auto;
@@ -133,6 +196,22 @@ text-decoration:none;
 font-size:22px;
 }
 
+/* MOBILE PRO */
+@media(max-width:768px){
+
+.hero h2{font-size:32px;}
+
+nav{
+flex-direction:column;
+align-items:center;
+}
+
+nav a{margin:10px;}
+
+section{padding:70px 5%;}
+
+}
+
 footer{
 text-align:center;
 padding:30px;
@@ -150,45 +229,63 @@ margin-top:50px;
 <h1>Dr. Rogerio Pontes</h1>
 <div>
 <a href="#procedimentos">Procedimentos</a>
-<a href="#agendar">Agendar</a>
+<a href="#antesdepois">Resultados</a>
+<a href="#galeria">Galeria</a>
 <a href="#login">Login</a>
 </div>
 </nav>
 </header>
 
 <section class="hero">
-<div>
+<div class="fade">
 <h2>Cirurgia Plástica de Alto Padrão</h2>
 <p>Resultados naturais com segurança e tecnologia.</p>
-<a href="#agendar" class="btn">Agendar Consulta</a>
+<a href="#login" class="btn">Agendar Consulta</a>
 </div>
 </section>
 
-<section id="procedimentos">
+<!-- PROCEDIMENTOS -->
+<section id="procedimentos" class="fade">
 <div class="title"><h2>Procedimentos</h2></div>
 
 <div class="cards">
-<div class="card">Rinoplastia</div>
-<div class="card">Lipoaspiração HD</div>
-<div class="card">Mamoplastia</div>
-<div class="card">Abdominoplastia</div>
+<div class="card"><img src="https://images.unsplash.com/photo-1588776814546-ec7e9f3f3f2c"><h3>Rinoplastia</h3></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1594824388853-2c5e7c6bcb35"><h3>Lipo HD</h3></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db"><h3>Mamoplastia</h3></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1550831107-1553da8c8464"><h3>Abdominoplastia</h3></div>
 </div>
 </section>
 
-<section id="agendar">
-<div class="title"><h2>Agendamento Online</h2></div>
+<!-- ANTES DEPOIS -->
+<section id="antesdepois" class="fade">
+<div class="title"><h2>Antes e Depois</h2></div>
 
-<div class="login">
-<input id="nome" placeholder="Nome">
-<input id="data" type="date">
-<textarea id="msg" placeholder="Procedimento desejado"></textarea>
-<button onclick="agendar()">Agendar</button>
+<div class="slider">
+<img src="https://images.unsplash.com/photo-1556228720-195a672e8a03">
+<div class="before" id="before">
+<img src="https://images.unsplash.com/photo-1556228720-195a672e8a03">
+</div>
 </div>
 
+<input type="range" min="0" max="100" value="50" class="range"
+oninput="slide(this.value)">
 </section>
 
+<!-- GALERIA -->
+<section id="galeria" class="fade">
+<div class="title"><h2>Galeria Médica</h2></div>
+
+<div class="galeria">
+<img src="https://images.unsplash.com/photo-1580281657527-47d9d1f2bfa1">
+<img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118">
+<img src="https://images.unsplash.com/photo-1581595219315-a187dd40c322">
+<img src="https://images.unsplash.com/photo-1580281780460-82d277d008b5">
+</div>
+</section>
+
+<!-- LOGIN -->
 <section id="login">
-<div class="title"><h2>Área do Paciente</h2></div>
+<div class="title"><h2>Área Restrita</h2></div>
 
 <div class="login">
 <input id="user" placeholder="Usuário">
@@ -196,96 +293,62 @@ margin-top:50px;
 <button onclick="login()">Entrar</button>
 </div>
 
-<div class="admin" id="admin">
-<h3>Painel Admin</h3>
-<ul id="lista"></ul>
+<div class="admin" id="medico">
+<h3>Painel Médico</h3>
+<p>Controle completo de pacientes e consultas.</p>
 </div>
 
 <div class="admin" id="paciente">
 <h3>Área do Paciente</h3>
-
-<p><b>Próxima Consulta:</b> 10/04/2026 - 14:30</p>
-
-<hr style="margin:15px 0;">
-
-<h4>Orientações Pós-Operatórias</h4>
-<ul>
-<li>✔ Evitar esforço físico por 7 dias</li>
-<li>✔ Utilizar cinta conforme orientação médica</li>
-<li>✔ Retorno em 15 dias</li>
-</ul>
-
-<hr style="margin:15px 0;">
-
-<h4>Documentos</h4>
-<button onclick="alert('Download iniciado')">Baixar Termo Médico</button>
-
-<hr style="margin:15px 0;">
-
-<h4>Contato Direto</h4>
-<a href="https://wa.me/5521988138982" target="_blank">
-<button>Falar com a Clínica</button>
-</a>
-
-<br><br>
-
+<p>Consulta confirmada: 10/04/2026 - 14:30</p>
 <button onclick="logout()">Sair</button>
-
 </div>
 
 </section>
 
 <footer>
-© 2026 Dr. Rogerio Pontes • CRM 000000 • Todos direitos reservados
+© 2026 Dr. Rogerio Pontes • CRM 000000
 </footer>
 
 <a class="whatsapp" href="https://wa.me/5521988138982">💬</a>
 
 <script>
 
-function agendar(){
-let nome=document.getElementById("nome").value;
-let data=document.getElementById("data").value;
-let msg=document.getElementById("msg").value;
+/* ANIMAÇÃO SCROLL */
+const faders=document.querySelectorAll('.fade');
 
-let agendamentos=JSON.parse(localStorage.getItem("agenda"))||[];
+window.addEventListener('scroll',()=>{
+faders.forEach(el=>{
+if(el.getBoundingClientRect().top<window.innerHeight-100){
+el.classList.add('show');
+}
+});
+});
 
-agendamentos.push(nome+" - "+data+" - "+msg);
-
-localStorage.setItem("agenda",JSON.stringify(agendamentos));
-
-alert("Consulta agendada!");
+/* SLIDER */
+function slide(v){
+document.getElementById("before").style.width=v+"%";
 }
 
+/* LOGIN SEPARADO */
 function login(){
 
 let u=document.getElementById("user").value;
 let p=document.getElementById("pass").value;
 
-if(u==="Rogerio" && p==="1234"){
-document.getElementById("admin").style.display="block";
+if(u==="medico" && p==="1234"){
+document.getElementById("medico").style.display="block";
+}
+else if(u==="paciente" && p==="1234"){
 document.getElementById("paciente").style.display="block";
-carregarAgenda();
-}else{
+}
+else{
 alert("Login inválido");
 }
 }
 
-function carregarAgenda(){
-let lista=document.getElementById("lista");
-lista.innerHTML="";
-
-let agendamentos=JSON.parse(localStorage.getItem("agenda"))||[];
-
-agendamentos.forEach(a=>{
-let li=document.createElement("li");
-li.textContent=a;
-lista.appendChild(li);
-});
-}
-
 function logout(){
-document.getElementById("admin").style.display="none";
+document.getElementById("medico").style.display="none";
 document.getElementById("paciente").style.display="none";
 }
 
