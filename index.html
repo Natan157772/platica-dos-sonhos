@@ -5,17 +5,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- SEO MÉDICO -->
 <title>Dr. Rogerio Pontes | Cirurgião Plástico</title>
-<meta name="description" content="Cirurgião plástico especializado em procedimentos estéticos e reparadores. Agende sua consulta online.">
-<meta name="keywords" content="cirurgião plástico, rinoplastia, lipoaspiração, mamoplastia">
-<meta name="author" content="Dr. Rogerio Pontes">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-
-/* ===== TEMA LUXO DARK ===== */
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
 
@@ -24,8 +18,6 @@ background:#0f0f11;
 color:#eaeaea;
 scroll-behavior:smooth;
 }
-
-/* NAVBAR */
 
 header{
 position:fixed;
@@ -48,8 +40,6 @@ color:white;
 text-decoration:none;
 margin-left:20px;
 }
-
-/* HERO */
 
 .hero{
 height:100vh;
@@ -76,15 +66,10 @@ display:inline-block;
 margin-top:20px;
 }
 
-/* SEÇÕES */
-
 section{padding:90px 8%;}
 
 .title{text-align:center;margin-bottom:40px;}
-
 .title h2{color:#d4af37;}
-
-/* CARDS */
 
 .cards{
 display:grid;
@@ -103,8 +88,6 @@ transition:.4s;
 transform:translateY(-10px);
 box-shadow:0 0 20px #d4af3750;
 }
-
-/* LOGIN */
 
 .login{
 max-width:400px;
@@ -130,8 +113,6 @@ width:100%;
 cursor:pointer;
 }
 
-/* PAINEL ADMIN */
-
 .admin{
 display:none;
 background:#111;
@@ -139,8 +120,6 @@ padding:20px;
 margin-top:20px;
 border-radius:10px;
 }
-
-/* WHATSAPP */
 
 .whatsapp{
 position:fixed;
@@ -177,7 +156,6 @@ margin-top:50px;
 </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
 <div>
 <h2>Cirurgia Plástica de Alto Padrão</h2>
@@ -186,7 +164,6 @@ margin-top:50px;
 </div>
 </section>
 
-<!-- PROCEDIMENTOS -->
 <section id="procedimentos">
 <div class="title"><h2>Procedimentos</h2></div>
 
@@ -198,7 +175,6 @@ margin-top:50px;
 </div>
 </section>
 
-<!-- AGENDAMENTO ONLINE -->
 <section id="agendar">
 <div class="title"><h2>Agendamento Online</h2></div>
 
@@ -211,7 +187,6 @@ margin-top:50px;
 
 </section>
 
-<!-- LOGIN PACIENTE -->
 <section id="login">
 <div class="title"><h2>Área do Paciente</h2></div>
 
@@ -226,6 +201,38 @@ margin-top:50px;
 <ul id="lista"></ul>
 </div>
 
+<div class="admin" id="paciente">
+<h3>Área do Paciente</h3>
+
+<p><b>Próxima Consulta:</b> 10/04/2026 - 14:30</p>
+
+<hr style="margin:15px 0;">
+
+<h4>Orientações Pós-Operatórias</h4>
+<ul>
+<li>✔ Evitar esforço físico por 7 dias</li>
+<li>✔ Utilizar cinta conforme orientação médica</li>
+<li>✔ Retorno em 15 dias</li>
+</ul>
+
+<hr style="margin:15px 0;">
+
+<h4>Documentos</h4>
+<button onclick="alert('Download iniciado')">Baixar Termo Médico</button>
+
+<hr style="margin:15px 0;">
+
+<h4>Contato Direto</h4>
+<a href="https://wa.me/5521988138982" target="_blank">
+<button>Falar com a Clínica</button>
+</a>
+
+<br><br>
+
+<button onclick="logout()">Sair</button>
+
+</div>
+
 </section>
 
 <footer>
@@ -235,8 +242,6 @@ margin-top:50px;
 <a class="whatsapp" href="https://wa.me/5521988138982">💬</a>
 
 <script>
-
-/* AGENDAMENTO REAL (LOCAL) */
 
 function agendar(){
 let nome=document.getElementById("nome").value;
@@ -252,8 +257,6 @@ localStorage.setItem("agenda",JSON.stringify(agendamentos));
 alert("Consulta agendada!");
 }
 
-/* LOGIN SIMPLES */
-
 function login(){
 
 let u=document.getElementById("user").value;
@@ -261,6 +264,7 @@ let p=document.getElementById("pass").value;
 
 if(u==="Rogerio" && p==="1234"){
 document.getElementById("admin").style.display="block";
+document.getElementById("paciente").style.display="block";
 carregarAgenda();
 }else{
 alert("Login inválido");
@@ -278,6 +282,11 @@ let li=document.createElement("li");
 li.textContent=a;
 lista.appendChild(li);
 });
+}
+
+function logout(){
+document.getElementById("admin").style.display="none";
+document.getElementById("paciente").style.display="none";
 }
 
 </script>
