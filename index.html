@@ -1,130 +1,90 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>>Dr. Luis Rogerio pontes Viana| Cirurgião Plástico</title>
+<!-- SEO MÉDICO -->
+<title>Dr. Ricardo Almeida | Cirurgião Plástico</title>
+<meta name="description" content="Cirurgião plástico especializado em procedimentos estéticos e reparadores. Agende sua consulta online.">
+<meta name="keywords" content="cirurgião plástico, rinoplastia, lipoaspiração, mamoplastia">
+<meta name="author" content="Dr Ricardo Almeida">
 
-<linkfile:///C:/Users/Natan.v/Pictures/Screenshots/Captura%20de%20tela%202026-03-17%20105518.png
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins', sans-serif;
-}
+/* ===== TEMA LUXO DARK ===== */
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
 
 body{
-background:#f5f6f8;
-color:#333;
+background:#0f0f11;
+color:#eaeaea;
+scroll-behavior:smooth;
 }
 
-/* MENU */
+/* NAVBAR */
 
 header{
-background:white;
-box-shadow:0 2px 10px rgba(0,0,0,0.08);
 position:fixed;
 width:100%;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(10px);
 z-index:1000;
 }
 
 nav{
 display:flex;
 justify-content:space-between;
-align-items:center;
 padding:15px 8%;
 }
 
-nav h1{
-color:#b48a78;
-}
-
-nav ul{
-display:flex;
-list-style:none;
-gap:25px;
-}
+nav h1{color:#d4af37;}
 
 nav a{
+color:white;
 text-decoration:none;
-color:#333;
-font-weight:500;
+margin-left:20px;
 }
 
 /* HERO */
 
 .hero{
 height:100vh;
-background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
-url("https://images.unsplash.com/photo-1588776814546-ec7e9e2c63b8");
-background-size:cover;
-background-position:center;
+background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+url("dr-ricardo.jpg") center/cover;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-color:white;
-padding:20px;
 }
 
 .hero h2{
-font-size:48px;
-margin-bottom:15px;
-}
-
-.hero p{
-font-size:20px;
-margin-bottom:25px;
+font-size:50px;
+color:#d4af37;
 }
 
 .btn{
-background:#b48a78;
+background:#d4af37;
 padding:15px 30px;
-border:none;
-color:white;
-text-decoration:none;
 border-radius:30px;
-font-weight:600;
+color:black;
+text-decoration:none;
+display:inline-block;
+margin-top:20px;
 }
 
 /* SEÇÕES */
 
-section{
-padding:80px 8%;
-}
+section{padding:90px 8%;}
 
-.title{
-text-align:center;
-margin-bottom:50px;
-}
+.title{text-align:center;margin-bottom:40px;}
 
-.title h2{
-color:#b48a78;
-font-size:32px;
-}
+.title h2{color:#d4af37;}
 
-/* SOBRE */
-
-.sobre{
-display:flex;
-gap:40px;
-flex-wrap:wrap;
-align-items:center;
-}
-
-.sobre img{
-width:350px;
-border-radius:10px;
-}
-
-.sobre-text{
-flex:1;
-}
-
-/* PROCEDIMENTOS */
+/* CARDS */
 
 .cards{
 display:grid;
@@ -133,62 +93,51 @@ gap:25px;
 }
 
 .card{
-background:white;
+background:#1a1a1d;
 padding:25px;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.08);
-text-align:center;
+border-radius:12px;
+transition:.4s;
 }
 
-.card h3{
-color:#b48a78;
-margin-bottom:10px;
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 20px #d4af3750;
 }
 
-/* GALERIA */
+/* LOGIN */
 
-.galeria{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:15px;
-}
-
-.galeria img{
-width:100%;
+.login{
+max-width:400px;
+margin:auto;
+background:#1a1a1d;
+padding:30px;
 border-radius:10px;
 }
 
-/* CONTATO */
-
-.contato{
-text-align:center;
-}
-
-input, textarea{
+input,textarea{
 width:100%;
 padding:12px;
 margin:10px 0;
-border-radius:8px;
-border:1px solid #ccc;
+border:none;
+border-radius:6px;
 }
 
 button{
-background:#b48a78;
-color:white;
+background:#d4af37;
 border:none;
-padding:12px 25px;
-border-radius:25px;
+padding:12px;
+width:100%;
 cursor:pointer;
 }
 
-/* FOOTER */
+/* PAINEL ADMIN */
 
-footer{
-background:#222;
-color:white;
-text-align:center;
-padding:25px;
-margin-top:40px;
+.admin{
+display:none;
+background:#111;
+padding:20px;
+margin-top:20px;
+border-radius:10px;
 }
 
 /* WHATSAPP */
@@ -198,11 +147,18 @@ position:fixed;
 bottom:20px;
 right:20px;
 background:#25D366;
-color:white;
-padding:15px 18px;
+padding:15px;
 border-radius:50%;
-font-size:22px;
+color:white;
 text-decoration:none;
+font-size:22px;
+}
+
+footer{
+text-align:center;
+padding:30px;
+background:black;
+margin-top:50px;
 }
 
 </style>
@@ -212,104 +168,119 @@ text-decoration:none;
 
 <header>
 <nav>
-<h1>Dr. Luis Rogerio pontes Viana</h1>
-<ul>
-<li><a href="#sobre">Sobre</a></li>
-<li><a href="#procedimentos">Procedimentos</a></li>
-<li><a href="#galeria">Resultados</a></li>
-<li><a href="#contato">Contato</a></li>
-</ul>
+<h1>Dr Ricardo Almeida</h1>
+<div>
+<a href="#procedimentos">Procedimentos</a>
+<a href="#agendar">Agendar</a>
+<a href="#login">Login</a>
+</div>
 </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
 <div>
-<h2>Excelência em Cirurgia Plástica</h2>
-<p>Beleza natural, segurança e resultados personalizados.</p>
-<a href="#contato" class="btn">Agendar Consulta</a>
+<h2>Cirurgia Plástica de Alto Padrão</h2>
+<p>Resultados naturais com segurança e tecnologia.</p>
+<a href="#agendar" class="btn">Agendar Consulta</a>
 </div>
 </section>
 
-<section id="sobre">
-<div class="title">
-<h2>Sobre o Médico</h2>
-</div>
-
-<div class="sobre">
-<img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d">
-
-<div class="sobre-text">
-<p>
-Dr. Ricardo Almeida é especialista em cirurgia plástica estética e reparadora,
-com mais de 15 anos de experiência. Membro da Sociedade Brasileira de Cirurgia
-Plástica, atua com foco em segurança, tecnologia e resultados naturais.
-</p>
-</div>
-</div>
-</section>
-
+<!-- PROCEDIMENTOS -->
 <section id="procedimentos">
-<div class="title">
-<h2>Procedimentos</h2>
-</div>
+<div class="title"><h2>Procedimentos</h2></div>
 
 <div class="cards">
-
-<div class="card">
-<h3>Rinoplastia</h3>
-<p>Harmonização facial e correção funcional do nariz.</p>
-</div>
-
-<div class="card">
-<h3>Lipoaspiração</h3>
-<p>Remoção de gordura localizada com alta precisão.</p>
-</div>
-
-<div class="card">
-<h3>Mamoplastia</h3>
-<p>Aumento, redução e reconstrução mamária.</p>
-</div>
-
-<div class="card">
-<h3>Abdominoplastia</h3>
-<p>Redefinição do contorno abdominal.</p>
-</div>
-
+<div class="card">Rinoplastia</div>
+<div class="card">Lipoaspiração HD</div>
+<div class="card">Mamoplastia</div>
+<div class="card">Abdominoplastia</div>
 </div>
 </section>
 
-<section id="galeria">
-<div class="title">
-<h2>Antes e Depois</h2>
+<!-- AGENDAMENTO ONLINE -->
+<section id="agendar">
+<div class="title"><h2>Agendamento Online</h2></div>
+
+<div class="login">
+<input id="nome" placeholder="Nome">
+<input id="data" type="date">
+<textarea id="msg" placeholder="Procedimento desejado"></textarea>
+<button onclick="agendar()">Agendar</button>
 </div>
 
-<div class="galeria">
-<img src="https://images.unsplash.com/photo-1580281657527-47b3c6b5aa4d">
-<img src="https://images.unsplash.com/photo-1588776814546-ec7e9e2c63b8">
-<img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118">
-</div>
 </section>
 
-<section id="contato">
-<div class="title">
-<h2>Agende sua Consulta</h2>
+<!-- LOGIN PACIENTE -->
+<section id="login">
+<div class="title"><h2>Área do Paciente</h2></div>
+
+<div class="login">
+<input id="user" placeholder="Usuário">
+<input id="pass" type="password" placeholder="Senha">
+<button onclick="login()">Entrar</button>
 </div>
 
-<div class="contato">
-<form>
-<input type="text" placeholder="Nome" required>
-<input type="email" placeholder="Email" required>
-<textarea placeholder="Mensagem"></textarea>
-<button type="submit">Enviar</button>
-</form>
+<div class="admin" id="admin">
+<h3>Painel Admin</h3>
+<ul id="lista"></ul>
 </div>
+
 </section>
 
 <footer>
-<p>© 2026 Dr. Ricardo Almeida - Cirurgião Plástico | Todos os direitos reservados</p>
+© 2026 Dr Ricardo Almeida • CRM 000000 • Todos direitos reservados
 </footer>
 
-<a class="whatsapp" href="https://wa.me/5521988138982">💬</a>
+<a class="whatsapp" href="https://wa.me/5599999999999">💬</a>
+
+<script>
+
+/* AGENDAMENTO REAL (LOCAL) */
+
+function agendar(){
+let nome=document.getElementById("nome").value;
+let data=document.getElementById("data").value;
+let msg=document.getElementById("msg").value;
+
+let agendamentos=JSON.parse(localStorage.getItem("agenda"))||[];
+
+agendamentos.push(nome+" - "+data+" - "+msg);
+
+localStorage.setItem("agenda",JSON.stringify(agendamentos));
+
+alert("Consulta agendada!");
+}
+
+/* LOGIN SIMPLES */
+
+function login(){
+
+let u=document.getElementById("user").value;
+let p=document.getElementById("pass").value;
+
+if(u==="admin" && p==="1234"){
+document.getElementById("admin").style.display="block";
+carregarAgenda();
+}else{
+alert("Login inválido");
+}
+}
+
+function carregarAgenda(){
+let lista=document.getElementById("lista");
+lista.innerHTML="";
+
+let agendamentos=JSON.parse(localStorage.getItem("agenda"))||[];
+
+agendamentos.forEach(a=>{
+let li=document.createElement("li");
+li.textContent=a;
+lista.appendChild(li);
+});
+}
+
+</script>
 
 </body>
 </html>
