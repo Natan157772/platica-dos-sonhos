@@ -245,14 +245,43 @@ margin-top:50px;
 </section>
 
 <!-- PROCEDIMENTOS -->
-<section id="procedimentos" class="fade">
+<section id="procedimentos">
 <div class="title"><h2>Procedimentos</h2></div>
 
+<!-- ABAS -->
+<div class="tabs">
+<button class="tab-btn active" onclick="filtrar('todos',this)">Todos</button>
+<button class="tab-btn" onclick="filtrar('face',this)">Face</button>
+<button class="tab-btn" onclick="filtrar('corpo',this)">Corpo</button>
+<button class="tab-btn" onclick="filtrar('mamas',this)">Mamas</button>
+</div>
+
 <div class="cards">
-<div class="card"><img src="https://images.unsplash.com/photo-1588776814546-ec7e9f3f3f2c"><h3>Rinoplastia</h3></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1594824388853-2c5e7c6bcb35"><h3>Lipo HD</h3></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db"><h3>Mamoplastia</h3></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1550831107-1553da8c8464"><h3>Abdominoplastia</h3></div>
+
+<div class="card" data-cat="face">
+<img src="https://images.unsplash.com/photo-1588776814546-ec7e9e2c63b8" style="width:100%;border-radius:10px;margin-bottom:10px;">
+<h3>Rinoplastia</h3>
+<p>Harmonização facial e correção nasal.</p>
+</div>
+
+<div class="card" data-cat="corpo">
+<img src="https://images.unsplash.com/photo-1550831107-1553da8c8464" style="width:100%;border-radius:10px;margin-bottom:10px;">
+<h3>Lipoaspiração HD</h3>
+<p>Definição corporal avançada.</p>
+</div>
+
+<div class="card" data-cat="mamas">
+<img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db" style="width:100%;border-radius:10px;margin-bottom:10px;">
+<h3>Mamoplastia</h3>
+<p>Aumento ou redução mamária.</p>
+</div>
+
+<div class="card" data-cat="corpo">
+<img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118" style="width:100%;border-radius:10px;margin-bottom:10px;">
+<h3>Abdominoplastia</h3>
+<p>Remodelação abdominal completa.</p>
+</div>
+
 </div>
 </section>
 
